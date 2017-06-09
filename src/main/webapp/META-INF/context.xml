@@ -1,0 +1,5 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Context>
+    <!-- Extend classpath for property files-->
+    <Loader className="org.apache.catalina.loader.VirtualWebappLoader" virtualClasspath="${PROPERTIES_DIR}"/>
+</Context>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="true">
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <appender name="APPLOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_DIR}/${APP_NAME}-application.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_DIR}/${APP_NAME}-application.%d{yyyy-MM-dd}.log.gz</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <!--<encoder class="nl.ing.riaf.core.log.logback.RIAFPatternLayoutEncoder">-->
+            <!--<pattern>%d{ISO8601} [%thread] %level %class %msg%n</pattern>-->
+        <!--</encoder>-->
+        <encoder>
+            <pattern>%d{ISO8601} [%thread] %level %class %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!--https://examples.javacodegeeks.com/enterprise-java/logback/logback-additivity-example/-->
+    <logger name="jaeger.de.miel" level="debug" additivity="false">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="APPLOG"/>
+    </logger>
+
+    <root level="debug">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="APPLOG"/>
+    </root>
+
+</configuration>

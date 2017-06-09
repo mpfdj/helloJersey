@@ -12,7 +12,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.core.IsNull.notNullValue;
 import static org.junit.Assert.assertThat;
 
-public class HelloCookieControllerTest {
+public class HelloCookieControllerIT {
 
 
     @Test
